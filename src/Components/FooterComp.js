@@ -2,8 +2,9 @@ import React from 'react';
 
 const FooterComp = () => {
     return (
-        <div>
-            footer
+        <div className='absolute bottom-0 w-full h-44 bg-black text-center text-zinc-50 pt-5 italic'>
+            <h1 className='font-bold '>Tammat Bil Khoar</h1>
+
         </div>
     );
 };
