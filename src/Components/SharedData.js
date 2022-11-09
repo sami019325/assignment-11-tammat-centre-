@@ -33,6 +33,46 @@ const SharedData = ({ children }) => {
         });
     }
 
+    // create account 
+
+    const userCreateCall = (name, email, password) => {
+        createUserWithEmailAndPassword(auth, name, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                updateUsercall(name)
+            })
+            .catch((error) => { console.error(error) })
+    }
+
+
+
+    // log in 
+    const logInCall = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                // ...
+            })
+            .catch((error) => {
+                console.error(error)
+            });
+
+    }
+    // update user 
+    const updateUsercall = (name) => {
+        updateProfile(auth.currentUser, {
+            displayName: `${name}`, photoURL: "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png"
+        }).then(() => {
+            console.log('Profile updated!')
+        }).catch((error) => {
+            console.error(error)
+        });
+    }
+
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(
             auth, logedInUser => {
@@ -43,7 +83,7 @@ const SharedData = ({ children }) => {
     }, [])
 
     const named = 'sami';
-    const commonData = { named, GoogleSignInConst, user, logOutCall };
+    const commonData = { named, GoogleSignInConst, user, logOutCall, userCreateCall, updateUsercall, logInCall };
     return (
         <SharedContext.Provider value={commonData}>
             {children}
