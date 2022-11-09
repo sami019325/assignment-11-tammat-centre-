@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './../../Resources/logo.png'
 import './NavBar.css'
 import { BsList, BsPlus } from "react-icons/bs";
+import SharedData, { SharedContext } from '../SharedData';
 
 const NavBar = () => {
     const [IsBtnActive, setIsBtnActive] = useState(true)
     const [navButtonOn, setNavButtonOn] = useState(0)
+    const { user, logOutCall } = useContext(SharedContext)
+
+    const handleLogOut = () => {
+        logOutCall()
+    }
     return (
         <nav className='bg-black h-20 grid grid-cols-6 sticky top-0 z-50'>
             <div className='flex items-center justify-start pl-12 gap-3 px-3 col-span-4 md:col-span-3 '>
@@ -22,18 +28,17 @@ const NavBar = () => {
                         <Link onClick={() => setNavButtonOn(2)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 2 ? 'border-b border-slate-400' : ''}`} to='/gallery'>Gallery</Link>
                         <Link onClick={() => setNavButtonOn(3)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 3 ? 'border-b border-slate-400' : ''}`} to='/blog'>Blog</Link>
                         <div className="dropdown dropdown-end ">
-                            <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src='' alt="" />
+                            <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={`${user.photoURL}`} alt="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                {/*  {
-                                ShowBtn ?
-                                    <li><button onClick={signOutFunction}>Log Out</button></li>
-                                    :
-                                    <>
-                                        <li><Link to='/login'>Log In</Link></li>
-                                        <li><Link to='register'>Register</Link></li>
-                                    </>
-                            } */}
-
+                                {
+                                    user.uid ?
+                                        <li><button onClick={handleLogOut}>Log Out</button></li>
+                                        :
+                                        <>
+                                            <li><Link to='/login'>Log In</Link></li>
+                                            <li><Link to='register'>Register</Link></li>
+                                        </>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -44,6 +49,21 @@ const NavBar = () => {
                         <Link onClick={() => setNavButtonOn(1) + setIsBtnActive(true)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 1 ? 'border-b border-slate-400' : ''}`} to='/service'>Service</Link>
                         <Link onClick={() => setNavButtonOn(2) + setIsBtnActive(true)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 2 ? 'border-b border-slate-400' : ''}`} to='/gallery'>Gallery</Link>
                         <Link onClick={() => setNavButtonOn(3) + setIsBtnActive(true)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 3 ? 'border-b border-slate-400' : ''}`} to='/blog'>Blog</Link>
+
+                        <div className="dropdown dropdown-end ">
+                            <img tabIndex={0} className='  m-auto w-20 h-20 rounded-full bg-slate-500' src={`${user.photoURL}`} alt="" />
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                {
+                                    user.uid ?
+                                        <li><button onClick={() => handleLogOut + setIsBtnActive(true)}>Log Out</button></li>
+                                        :
+                                        <>
+                                            <li><Link onClick={() => setIsBtnActive(true)} to='/login'>Log In</Link></li>
+                                            <li><Link onClick={() => setIsBtnActive(true)} to='register'>Register</Link></li>
+                                        </>
+                                }
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
