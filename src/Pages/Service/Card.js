@@ -30,8 +30,8 @@ const Card = (details) => {
         star = '⭐⭐';
     }
     return (
-        <div>
-            <div className="card w-10/12 h-full bg-base-100 shadow-xl">
+        <div className='m-auto'>
+            <div className="m-auto card w-10/12 h-full bg-base-100 shadow-xl">
                 <figure><img className='mt-0 h-72 w-full' src={img} alt="Tammat's service" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
