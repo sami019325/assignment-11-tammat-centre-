@@ -8,7 +8,7 @@ export const SharedContext = createContext()
 
 
 const SharedData = ({ children }) => {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({ photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt-F5GQg8qB2fWquF1ltQvAT2Z8Dv5pJLb9w&usqp=CAU' })
 
     const auth = getAuth(app)
     // google sign in 
@@ -28,6 +28,7 @@ const SharedData = ({ children }) => {
     const logOutCall = () => {
         signOut(auth).then(() => {
             console.log('log out successfully')
+            window.location.reload()
         }).catch((error) => {
             console.error(error)
         });
@@ -55,6 +56,7 @@ const SharedData = ({ children }) => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
+                window.location.reload()
                 // ...
             })
             .catch((error) => {
