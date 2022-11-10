@@ -25,8 +25,14 @@ const NavBar = () => {
                 <div className={`hidden lg:block `}>
                     <div className={`flex justify-end items-center gap-5 px-10`}>
                         <Link onClick={() => setNavButtonOn(1)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 1 ? 'border-b border-slate-400' : ''}`} to='/service'>Service</Link>
-                        <Link onClick={() => setNavButtonOn(2)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 2 ? 'border-b border-slate-400' : ''}`} to='/gallery'>Gallery</Link>
-                        <Link onClick={() => setNavButtonOn(3)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 3 ? 'border-b border-slate-400' : ''}`} to='/blog'>Blog</Link>
+                        {
+                            user.uid ? <>
+                                <Link onClick={() => setNavButtonOn(2)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 2 ? 'border-b border-slate-400' : ''}`} to='/review'>Review</Link>
+                                <Link onClick={() => setNavButtonOn(3)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 3 ? 'border-b border-slate-400' : ''}`} to='/addservice'>Add service</Link>
+                            </>
+                                : ''
+                        }
+                        <Link onClick={() => setNavButtonOn(4)} className={`px-2 py-1 font-bold hover:border-b  hover:border-slate-400  text-stone-200 ${navButtonOn === 4 ? 'border-b border-slate-400' : ''}`} to='/blog'>Blog</Link>
                         <div className="dropdown dropdown-end ">
                             <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={`${user.photoURL}`} alt="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
