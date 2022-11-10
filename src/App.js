@@ -4,12 +4,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CommonPage from './Components/CommonPage';
 import LogIn from './Components/LogIn';
 import Register from './Components/Register';
+import Service from './Pages/Service/Service';
 
 
 const router = createBrowserRouter([
   {
     path: '/', element: <CommonPage />, children: [
-      { path: '/', element: <div>body</div> },
+      { path: '/', element: <Service /> },
       { path: '/login', element: <LogIn /> },
       { path: '/register', element: <Register /> },
 
