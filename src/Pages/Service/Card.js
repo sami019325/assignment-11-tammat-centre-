@@ -1,4 +1,7 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
 
 const Card = (details) => {
 
@@ -32,7 +35,13 @@ const Card = (details) => {
     return (
         <div className='m-auto'>
             <div className="m-auto card w-10/12 h-full bg-base-100 shadow-xl">
-                <figure><img className='mt-0 h-72 w-full' src={img} alt="Tammat's service" /></figure>
+                <figure>
+                    <PhotoProvider>
+                        <PhotoView src={img}>
+                            <img className='mt-0 h-72 w-full' src={img} alt="Tammat's service" />
+                        </PhotoView>
+                    </PhotoProvider>
+                </figure>
                 <div className="card-body">
                     <h2 className="card-title">
                         {title}

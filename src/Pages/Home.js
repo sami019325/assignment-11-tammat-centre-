@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Card from './Service/Card';
 import video from './../Resources/Large-Img/20220807_195817_1.mp4'
 import ReactPlayer from 'react-player';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Home = () => {
 
@@ -65,18 +67,26 @@ const Home = () => {
 
 
             {/* other detail parts */}
-            <article className='grid grid-cols-2 gap-3 w-10/12 m-auto mt-5'>
+            <article className='grid grid-cols-1 lg:grid-cols-2 gap-3 w-10/12 m-auto mt-5'>
                 <div className='bg-amber-200 p-5'>
                     <h1 className='text-lg font-bold'>About me!</h1>
                     <p>I am a  professional athlete and i have experience of more than 10 years in this field. During this period I learned many new things, experienced many kinds of positivity as well as negativity. I have experience of rock climbing, adventure racing, swimming, climbing, and so on. I have many national as well as international achievements. I personally enjoy this field and encourage others to explore this field. </p>
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/TmtGwMc/cover.jpg" alt="" srcset="" />
+                    <PhotoProvider>
+                        <PhotoView src="https://i.ibb.co/TmtGwMc/cover.jpg">
+                            <img src="https://i.ibb.co/TmtGwMc/cover.jpg" alt="" srcset="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
             </article>
-            <article className='grid grid-cols-2 gap-3 w-10/12 m-auto mt-5'>
+            <article className='grid grid-cols-1 lg:grid-cols-2 gap-3 w-10/12 m-auto mt-5'>
                 <div>
-                    <img src="https://i.ibb.co/64WwPsV/loading10.jpg" alt="" srcset="" />
+                    <PhotoProvider>
+                        <PhotoView src="https://i.ibb.co/64WwPsV/loading10.jpg">
+                            <img src="https://i.ibb.co/64WwPsV/loading10.jpg" alt="" srcset="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
                 <div className='flex items-center justify-center bg-red-200 p-5'>
                     <h1 className='text-2xl font-bold'><span className='text-orange-500'>''</span> Your job Should be your profession <span className='text-orange-500'>''</span> </h1>
