@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from './Service/Card';
 
 const Review = () => {
     const [review, setreview] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch(' https://assignment11-sami019325.vercel.app/review')
             .then(res => res.json())
             .then(review => setreview(review))
     }, [])
+
+
+    // update rating 
+    const updateData = () => {
+        fetch('')
+    }
     return (
         <div>
             {
@@ -28,16 +35,12 @@ const ReviwCard = (data) => {
             <div className='col-span-3'>
                 <h1 className='font-bold'>{title}</h1>
                 <p>Ratings: {ratings}</p>
-                <p>Rate the service:</p>
-                <div >
-                    <button className='p-1 m-1 rounded-full bg-indigo-800'>⭐⭐⭐⭐⭐</button>
-                    <button className='p-1 m-1 rounded-full bg-indigo-800'>⭐⭐⭐⭐</button>
-                    <button className='p-1 m-1 rounded-full bg-indigo-800'>⭐⭐⭐</button>
-                    <button className='p-1 m-1 rounded-full bg-indigo-800'>⭐⭐</button>
-                    <button className='p-1 m-1 rounded-full bg-indigo-800'>⭐</button>
-                </div>
+                <button className='px-5 py-2 m-1 rounded-full bg-indigo-800 font-bold text-white'><Link to='/reviewform'>Add a review</Link></button>
                 {
-                    isBook ? <div>You have rated already</div> : ''
+                    isBook ? <div>
+                        <h1>You have rated already</h1>
+                        if you want to delete click here <button className='btn'>DELETE</button>
+                    </div> : ''
                 }
             </div>
         </div>
