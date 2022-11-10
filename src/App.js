@@ -10,6 +10,7 @@ import AddService from './Pages/AddService';
 import Review from './Pages/Review';
 import ReviewForm from './Pages/ReviewForm';
 import Blog from './Pages/Blog';
+import Nopage from './Pages/Nopage';
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       { path: '/register', element: <Register /> },
       { path: '/blog', element: <Blog /> },
 
-      { path: '*', element: <div>404</div> },
+      { path: '*', element: <Nopage /> },
 
     ]
   },
