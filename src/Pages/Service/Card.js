@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Card from './Card';
+import React from 'react';
 
-const Service = () => {
-    const [data, setData] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(res => res.json())
-            .then(data => setData(data))
-    }, [])
-    return (
-        <div className='mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-            {
-                data.map(details => <div className='m-auto'>
-                    <Card key={details._id} detail={details}></Card>
-                </div>
-                )
-            }
-        </div>
-    );
-};
+const Card = (details) => {
 
-/* const Card = (details) => {
     const { description, duration, img, isBook, price, ratings, title } = details.detail
-    console.log(description, duration, img, isBook, price, ratings, title)
+    // console.log(description, duration, img, isBook, price, ratings, title)
 
     let rate = ratings
     let star = '⭐⭐⭐⭐⭐';
@@ -73,6 +54,7 @@ const Service = () => {
                 </div>
             </div>
         </div>
-    )
-} */
-export default Service;
+    );
+};
+
+export default Card;
